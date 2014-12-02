@@ -1,0 +1,40 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Auflistung alle Blogs</h1>
+
+<f:flashMessages renderMode="div" />
+
+<f:form action="list" additionalAttributes="{role : 'form'}">
+    <div class="form-inline">
+        <div class="form-group">
+            <f:form.textfield name="search" value="{search}" class="form-control" />
+            <f:form.submit value="suchen" class="btn-xs btn-primary" />
+        </div>
+    </div>
+</f:form>
+<ul class="list-group">
+    <f:for each="{blogs}" as="blog">
+
+        <li class="list-group-item">{blog.title}
+            <f:link.action action="show" arguments="{blog : blog}" class="btn btn-primary btn-xs pull-right">Show </f:link.action>
+            <f:link.action action="updateForm" arguments="{blog : blog}" class="btn btn-primary btn-xs pull-right margin-right">Update </f:link.action>
+            <f:link.action action="deleteConfirm" arguments="{blog : blog}" class="btn btn-primary btn-xs pull-right margin-right">Löschen </f:link.action>
+        </li>
+    </f:for>
+</ul>
+
+<f:link.action action="addForm">New Blog</f:link.action>
+</f:section>

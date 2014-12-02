@@ -1,0 +1,9 @@
+<ul>
+    <li{f:if(condition:'{char}=="%"',then:' class="active"')}>
+    <f:widget.link arguments="{char:'%'}">[ALLE]</f:widget.link>
+        <f:for each="{letters}" as="letter">
+            <li{f:if(condition:'{char}=="%"',then:' class="active"')}>
+                <f:widget.link arguments="{char:letter}" class="active">{letter}</f:widget.link>
+        </f:for>
+    </li>
+</ul>

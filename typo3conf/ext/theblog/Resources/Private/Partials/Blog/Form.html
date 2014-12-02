@@ -1,0 +1,34 @@
+{namespace tv = Todoweb\Theblog\ViewHelpers}
+{headline}
+<div class="alert alert-danger"><f:render partial="Error" arguments="{object: 'blog'}" />
+
+</div>
+<f:form action="{action}" enctype="multipart/form-data" object="{blog}" name="blog" additionalAttributes="{role:'form'}">
+
+
+    <div class="form-group">
+
+            <label{tv:hasError(property:'title',then:' class="text-danger"')}>
+       Blog Title
+        </label>
+        <f:form.textfield property="title" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>
+            Blog Beschreibung
+        </label>
+        <f:form.textarea property="description" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>
+            Blog Bild
+        </label>
+        <f:if condition="{blog.image}">
+            <br /><f:image src="uploads/tx_theblog/{blog.image}"/>
+        </f:if>
+        <f:form.upload property="image" class="form-control"/>
+    </div>
+
+    <f:form.submit value="{submitmessage}" class="btn btn-primary"/>
+</f:form>

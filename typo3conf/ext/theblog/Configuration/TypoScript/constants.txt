@@ -1,0 +1,15 @@
+
+plugin.tx_theblog {
+	view {
+		# cat=plugin.tx_theblog/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:theblog/Resources/Private/Templates/
+		# cat=plugin.tx_theblog/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:theblog/Resources/Private/Partials/
+		# cat=plugin.tx_theblog/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:theblog/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_theblog//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

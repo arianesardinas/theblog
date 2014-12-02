@@ -1,0 +1,89 @@
+
+plugin.tx_theblog {
+	view {
+		templateRootPath = {$plugin.tx_theblog.view.templateRootPath}
+		partialRootPath = {$plugin.tx_theblog.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_theblog.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = 2,3,15
+        recursive = 1
+        classes{
+            Todoweb\Theblog\Domain\Model\Blog{
+                newRecordStoragePid = 3
+            }
+            Todoweb\Theblog\Domain\Model\Post{
+                newRecordStoragePid = 4
+            }
+            Todoweb\Theblog\Domain\Model\Comment{
+                newRecordStoragePid = 5
+            }
+            Todoweb\Theblog\Domain\Model\Tag{
+                newRecordStoragePid = 6
+            }
+            Todoweb\Theblog\Domain\Model\Author{
+                mapping{
+                    tableName = fe_users
+                    columns{
+                        name.mapOnProperty = fullname
+
+                    }
+                }
+            }
+        }
+
+	}
+    settings {
+        blog.max = 25
+    }
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+page {
+    includeCSS {
+        bootstrap = EXT:theblog/Resources/Public/Bootstrap/css/bootstrap.min.css
+        simpleblog = EXT:theblog/Resources/Public/Css/Theblog.css
+    }
+    includeJSlibs {
+        jquery = http://code.jquery.com/jquery.js
+        //jquery.external = 1
+        // local installation, so I can't rely on the cdn
+        jquery = EXT:theblog/Resources/Public/Bootstrap/js/jquery.js
+        bootstrap = EXT:theblog/Resources/Public/Bootstrap/js/bootstrap.min.js
+    }
+}
+plugin.tx_theblog._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-theblog table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-theblog table th {
+		font-weight:bold;
+	}
+
+	.tx-theblog table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)

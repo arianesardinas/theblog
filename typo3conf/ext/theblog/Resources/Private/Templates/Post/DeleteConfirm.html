@@ -1,0 +1,5 @@
+<h1>Post Löschen</h1>
+        Wollen Sie den Post <strong>{post.title}</strong> (zugehörig zum Blog {blog.title}) löschen?
+        <br />
+<f:link.action action="list" class="btn btn-danger">Nein, nicht löschen</f:link.action>
+<f:link.action action="delete" class="btn btn-success" arguments="{post:post, blog:blog}">Ja, weg damit!</f:link.action>
